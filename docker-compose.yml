@@ -1,0 +1,73 @@
+version: '2.2'
+services:
+    rabbitmq:
+        hostname: rabbit
+        image: rabbitmq:3.7-management
+        networks: 
+            - network
+        environment:
+            - TCP_PORTS=15672, 5672
+        ports:
+            - "5672:5672"
+            - "15672:15672"
+
+    influxdb:
+        image: influxdb
+        tty: True
+        networks: 
+            - network
+        environment:
+            INFLUXDB_USER: tides
+            INFLUXDB_USER_PASSWORD: TidesGoesUpAndDown
+        volumes:
+            - persistent:/var/lib/influxdb
+
+    grafana:
+        image: grafana/grafana
+        networks: 
+            - network
+        ports:
+            - '3000:3000'
+        links:
+            - influxdb
+        environment:
+            GF_INSTALL_PLUGINS: 'grafana-worldmap-panel'
+            GF_SECURITY_ADMIN_PASSWORD: admin
+        volumes:
+            - persistent:/var/lib/grafana
+
+    worker:
+        image: tidesmonitor
+        build:
+            context: .
+        tty: True
+        networks: 
+            - network
+        volumes:
+            - ./tides:/app/tides
+            - persistent:/var/lib/celery/results.db
+        links:
+            - rabbitmq
+        command: celery -A tides worker -Q celery -c 1
+        
+    beat:
+        image: tidesmonitor
+        build:
+            context: .
+        tty: True
+        networks: 
+            - network
+        volumes:
+            - persistent:/var/lib/celery/schedule.db
+        command: celery -A tides beat
+
+
+volumes:
+    persistent:
+
+networks:
+    network:
+
+
+
+  
