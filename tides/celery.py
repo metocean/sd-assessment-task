@@ -6,3 +6,5 @@ from . import settings
 
 app = Celery('tides')
 app.config_from_object(settings)
+
+from . import tasks

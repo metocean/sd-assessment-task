@@ -20,7 +20,7 @@ services:
             INFLUXDB_USER: tides
             INFLUXDB_USER_PASSWORD: TidesGoesUpAndDown
         volumes:
-            - persistent:/var/lib/influxdb
+            - influxdb:/var/lib/influxdb
 
     grafana:
         image: grafana/grafana
@@ -34,36 +34,26 @@ services:
             GF_INSTALL_PLUGINS: 'grafana-worldmap-panel'
             GF_SECURITY_ADMIN_PASSWORD: admin
         volumes:
-            - persistent:/var/lib/grafana
+            - grafana:/var/lib/grafana
 
     worker:
         image: tidesmonitor
         build:
             context: .
         tty: True
+        working_dir: /app
         networks: 
             - network
         volumes:
             - ./tides:/app/tides
-            - persistent:/var/lib/celery/results.db
+            - celery:/var/lib/celery
         links:
             - rabbitmq
-        command: celery -A tides worker -Q celery -c 1
-        
-    beat:
-        image: tidesmonitor
-        build:
-            context: .
-        tty: True
-        networks: 
-            - network
-        volumes:
-            - persistent:/var/lib/celery/schedule.db
-        command: celery -A tides beat
-
-
+        command: celery -A tides worker -E -c1 -l INFO -B
 volumes:
-    persistent:
+    influxdb:
+    grafana:
+    celery:
 
 networks:
     network:
