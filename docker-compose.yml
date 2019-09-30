@@ -49,6 +49,15 @@ services:
         links:
             - rabbitmq
         command: celery -A tides worker -E -c1 -l INFO -B
+
+    monitor:
+        image: tidesmonitor
+        tty: True
+        working_dir: /app
+        volumes:
+            - ./monitor:/app/monitor
+            - ./tides:/app/tides
+        command: python monitor/monitor.py
 volumes:
     influxdb:
     grafana:
