@@ -9,8 +9,6 @@ services:
             - TCP_PORTS=15672, 5672
         ports:
             - "5672:5672"
-            - "15672:15672"
-
     influxdb:
         image: influxdb
         tty: True
@@ -19,6 +17,7 @@ services:
         environment:
             INFLUXDB_USER: tides
             INFLUXDB_USER_PASSWORD: TidesGoesUpAndDown
+            INFLUXDB_DB: tidesmonitor
         volumes:
             - influxdb:/var/lib/influxdb
 
