@@ -10,7 +10,7 @@ To fulfill this task you will require a recent version of Docker and docker-comp
 
 After installing Git, Docker and docker-compose.
 
- 1. Clone this repository
+ 1. `git clone https://github.com/metocean/sd-assessment-task.git`
  2. `$ cd sd-assessment-task`
  3. `$ docker-compose up`
 
@@ -51,7 +51,7 @@ You can use the `docker-compose` service to start your service. Please checkout 
   * Password: `TidesGoesUpAndDown`
 
 
-3. Wait until you service accumulate about an hour worth of data then make an evaluation of the different tasks and how they are performing and what insights you have about the API performance for different queries. All Task settings can be checked [here](settings.py).
+3. Wait until you service accumulate about an hour worth of data then make an evaluation of the different tasks and how they are performing and what insights you have about the API performance for different queries. All Task settings can be checked [here](tides/settings.py).
 
 ## Docker and docker-compose usage tips
 
