@@ -5,7 +5,7 @@ Assessment task for the MRD - Scientific Developer position
 To fulfill this task you will require a recent version of Docker and docker-compose. Please refer to the documentation about installation:
 
  * Git
- * Docker-engine (Community version): [install docs!](https://docs.docker.com/install/linux/docker-ce/ubuntu/)
+ * Docker-engine (Community edition): [install docs!](https://docs.docker.com/install/linux/docker-ce/ubuntu/)
  * docker-compose: [install docs!](https://docs.docker.com/compose/install/)
 
 After installing Git, Docker and docker-compose.
