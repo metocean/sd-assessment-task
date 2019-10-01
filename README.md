@@ -39,7 +39,7 @@ The code will be evaluated by:
  * Clear usage of docstrings
  * Usage of language builtin resources
  
-You can use the `docker-compose` service to start your service. Please checkout the service configuration [here](docker-compose.yml#53).
+You can use the `docker-compose` service to start your service. Please checkout the service configuration [here](docker-compose.yml#L53).
 
 2. Go to the [Grafana service in your local machine](http://localhost:3000) and create a Dashboard to visualize the stats about the tasks running in order to monitor exactly when a task is received by the worker, starts to run and finishes. Save and export this Dashboard and attach to your source-code. Before using the InfluxDB data, it's necessary to add it as a Data Source with the following parameters:
 
