@@ -25,8 +25,6 @@ Here is provided a [docker-compose.yml](docker-compose.yml) file with the follow
  * A [Grafana](https://grafana.com/docs/installation/docker/) node, this will expose the service on your local machine at http://localhost:3000 (admin:admin)
  * An [InfluxDB](https://hub.docker.com/_/influxdb) database
 
- After installing Docker and docker
- 
 
 ## Assessment Task
 
@@ -52,6 +50,10 @@ You can use the `docker-compose` service to start your service. Please checkout 
 
 
 3. Wait until you service accumulate about an hour worth of data then make an evaluation of the different tasks and how they are performing and what insights you have about the API performance for different queries. All Task settings can be checked [here](tides/settings.py).
+
+## Submiting your task
+
+Once you have finished, please DON'T submit a PR to this repo, but compress this repo with your code in it as ZIP format and reply to  
 
 ## Docker and docker-compose usage tips
 
