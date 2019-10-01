@@ -44,7 +44,7 @@ services:
         networks: 
             - network
         volumes:
-            - ./tides:/app/tides
+            - ./:/app
             - celery:/var/lib/celery
         links:
             - rabbitmq
@@ -55,8 +55,7 @@ services:
         tty: True
         working_dir: /app
         volumes:
-            - ./monitor:/app/monitor
-            - ./tides:/app/tides
+            - ./:/app
         command: python monitor/monitor.py
 volumes:
     influxdb:
