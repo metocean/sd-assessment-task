@@ -10,12 +10,6 @@ To fulfil this task you will require a recent version of Docker and docker-compo
  * A Linux OS (although it's theoretically possible to do it in a Windows environment has not being tested and is possibly cumbersome)
  * Python libraries mentioned in [requirements file](requirements.txt).
 
-After installing Git, Docker and docker-compose.
-
- 1. `git clone https://github.com/metocean/sd-assessment-task.git`
- 2. `$ cd sd-assessment-task`
- 3. `$ docker-compose up`
-
 ## Contents
 
 In this repository is contained a minimal application that uses [Celery](https://docs.celeryproject.org/en/latest/) Tasks to perform periodic queries (every minute) to one of our data APIs (Tide API) requesting water elevation data for different locations around New Zealand, also the API should return an JSON object compliant with this format [CF-JSON](http://cf-json.org/).
@@ -27,6 +21,21 @@ Here is provided a [docker-compose.yml](docker-compose.yml) file with the follow
  * A [Grafana](https://grafana.com/docs/installation/docker/) node, this will expose the service on your local machine at http://localhost:3000 (admin:admin)
  * An [InfluxDB](https://hub.docker.com/_/influxdb) database
 
+## Starting services
+
+After installing Git, Docker and docker-compose.
+```
+
+ 1. $ git clone https://github.com/metocean/sd-assessment-task.git
+ 2. $ cd sd-assessment-task
+ 3. $ $ docker-compose up -d
+```
+
+## Create the InfluxDB database
+
+```
+    $ docker-compose exec influxdb influx -execute 'CREATE DATABASE "tidesmonitor"'
+```
 
 ## Assessment Task
 
@@ -44,6 +53,8 @@ The code will be evaluated by:
 You can use the `docker-compose` service to start your service. Please checkout the service configuration [here](docker-compose.yml#L53).
 
 2. Go to the [Grafana service in your local machine](http://localhost:3000) and create a Dashboard to visualize the stats about the tasks running in order to monitor exactly when a task is received by the worker, starts to run and finishes. Save and export this Dashboard and attach to your source-code. Before using the InfluxDB data, it's necessary to add it as a Data Source with the following parameters:
+
+
 
   * URL: `http://influxdb:8086`
   * Database: `tidesmonitor`
