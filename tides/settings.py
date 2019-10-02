@@ -48,9 +48,7 @@ CELERYBEAT_SCHEDULE = {
         'kwargs': {
             'apikey': TIDES_APIKEY,
             'endpoint': 'https://tide.metoceanapi.com/v0/stations/dunedin/constituents',
-            'params': {
-                'datum': 'LAT',
-            },            
+            'params': {},            
         }
     },
     'all_stations': {
@@ -59,9 +57,7 @@ CELERYBEAT_SCHEDULE = {
         'kwargs': {
             'apikey': TIDES_APIKEY,
             'endpoint': 'https://tide.metoceanapi.com/v0/stations/',
-            'params': {
-                'datum': 'LAT',
-            },            
+            'params': {},            
         }
     },
 }

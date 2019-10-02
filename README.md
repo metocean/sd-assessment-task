@@ -2,11 +2,13 @@ Assessment task for the MRD - Scientific Developer position
 
 ## Requirements:
 
-To fulfill this task you will require a recent version of Docker and docker-compose. Please refer to the documentation about installation:
+To fulfil this task you will require a recent version of Docker and docker-compose. Please refer to the documentation about installation:
 
  * Git
  * Docker-engine (Community edition): [install docs!](https://docs.docker.com/install/linux/docker-ce/ubuntu/)
  * docker-compose: [install docs!](https://docs.docker.com/compose/install/)
+ * A Linux OS (although it's theoretically possible to do it in a Windows environment has not being tested and is possibly cumbersome)
+ * Python libraries mentioned in [requirements file](requirements.txt).
 
 After installing Git, Docker and docker-compose.
 
@@ -49,11 +51,13 @@ You can use the `docker-compose` service to start your service. Please checkout 
   * Password: `TidesGoesUpAndDown`
 
 
-3. Wait until you service accumulate about an hour worth of data then make an evaluation of the different tasks and how they are performing and what insights you have about the API performance for different queries. All Task settings can be checked [here](tides/settings.py).
+3. Wait until you service accumulate about an hour worth of data then make an evaluation of the different tasks and how they are performing and what insights you have about the Tide API performance for the different queries. All Task settings can be checked [here](tides/settings.py).
 
 ## Submiting your task
 
-Once you have finished, please DON'T submit a PR to this repo, but compress this repo with your code in it as ZIP format and reply to  
+This task should be evaluated anonymously, this means within the files you supply, cannot have any information that would allow us to indentify you.
+
+Once you have finished, please DON'T submit a PR to this repo or , but compress this repo with your code in it as ZIP format and reply to recruitment@metservice.com with subtitle "Scientific Developer - Assessment Task".
 
 ## Docker and docker-compose usage tips
 
@@ -61,9 +65,17 @@ Once you have finished, please DON'T submit a PR to this repo, but compress this
 
 Docker compose has different states for a container or is `created`, `started`, `stopped` and `exited`. So when you `docker-compose up` a service Docker will first `create`, then `start`, and if you `docker-compose down` it will `stop` and `delete` the container, which is different then `docker-compose stop`.
 
+### Check logs
+
+You can check logfiles for each service by doing:
+
+```
+    $ docker-compose logs [service]
+```
+
 ### Clean the persistent volumes
 
-In this docker-compose file there's 3 volumes being created from start celery, influxdb and grafana each one persists the data for the services accross container restarts and recreation. So if you like to fully reset the persistent volumes contents it's necessary to manually remove them:
+In this docker-compose file there are 3 volumes being created from start celery, influxdb and grafana each one persists the data for the services accross container restarts and recreation. So if you like to fully reset the persistent volumes contents it's necessary to manually remove them:
 
 ```
     $ docker-compose down
