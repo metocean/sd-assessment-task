@@ -68,7 +68,7 @@ You can use the `docker-compose` service to start your service. Please checkout 
 
 This task should be evaluated anonymously, this means within the files you supply, cannot have any information that would allow us to indentify you.
 
-Once you have finished, please DON'T submit a PR to this repo or , but compress this repo with your code in it as ZIP format and reply to recruitment@metservice.com with subtitle "Scientific Developer - Assessment Task".
+Once you have finished, please DON'T submit a PR to this repo, but compress it contents with your code as a ZIP format file and send to recruitment@metservice.com with the subtitle "Scientific Developer - Assessment Task".
 
 ## Docker and docker-compose usage tips
 
